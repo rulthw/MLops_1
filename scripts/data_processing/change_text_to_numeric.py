@@ -16,7 +16,7 @@ df = pd.read_csv(f_input)
 df['rating_MPAA'] = df['rating_MPAA'].replace({'R': 1, 'PG-13': 2, 'PG': 3, 'NR': 4, 'G': 5})
 df['fresh'] = df['fresh'].replace({'fresh': 1, 'rotten': 0})
 
-df.to_csv(f_output, header=None, index=None)
+df.to_csv(f_output, index=False)
 
 
 

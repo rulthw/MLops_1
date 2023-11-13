@@ -9,8 +9,8 @@ stages:
       size: 35328285
     - path: scripts/data_processing/get_features.py
       hash: md5
-      md5: c926e715a570f0fd44d3fc4c00ec253f
-      size: 588
+      md5: edf6d8ce7a13bf1b7152f20583778944
+      size: 586
     outs:
     - path: data/stage1
       hash: md5
@@ -43,11 +43,31 @@ stages:
       size: 2002013
     - path: scripts/data_processing/change_text_to_numeric.py
       hash: md5
-      md5: d317b39a02fd2038022a1cf3dde0f9be
-      size: 572
+      md5: c80fff01c8cfba442ebd4b17b05264c9
+      size: 560
     outs:
     - path: data/stage3
       hash: md5
-      md5: 4e88e62e86c433ba655916750ed09f0a.dir
-      size: 1808181
+      md5: f91d000efbc0ed15b2bdab33964babfc.dir
+      size: 1808259
       nfiles: 1
+  split:
+    cmd: python3 scripts/data_processing/train_test_split.py data/stage3/train.csv
+    deps:
+    - path: data/stage3/train.csv
+      hash: md5
+      md5: 7a92056b3ab8b8412d34c4f563dc5999
+      size: 1808259
+    - path: scripts/data_processing/train_test_split.py
+      hash: md5
+      md5: f67fd07b9f7faa4b3c3207a670a9674b
+      size: 948
+    params:
+      params.yaml:
+        split.split_ratio: 0.3
+    outs:
+    - path: data/stage4
+      hash: md5
+      md5: 6797aa4080e3a76c974d5a8947ce28a4.dir
+      size: 1623153
+      nfiles: 2

@@ -15,4 +15,4 @@ df = pd.read_csv(f_input)
 
 df = df.drop(columns = ["synopsis", "genre", "director", "writer", "theater_date", "dvd_date", "studio", "dvd_date_int", "theater_date_int", "review", "critic", "publisher","date", "rating_10"])
 
-df.to_csv(f_output, index = False)
+df.to_csv(f_output, index=False)
